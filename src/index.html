@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pusher Notification Test</title>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+</head>
+<body>
+    <div id="notifications">
+        <h2>Notifications</h2>
+        <ul id="notification-list"></ul>
+    </div>
+
+    <script>
+        const pusher = new Pusher('6617161572132e880b76', {
+            cluster: 'ap2',
+            encrypted: true,
+        });
+
+        const channel = pusher.subscribe('employee-653a5b6720ba35df525de87a'); // Replace with the actual employee ID
+
+        channel.bind('notification', function(data) {
+            const notificationList = document.getElementById('notification-list');
+            const listItem = document.createElement('li');
+            listItem.textContent = data.message;
+            notificationList.appendChild(listItem);
+        });
+    </script>
+</body>
+</html>

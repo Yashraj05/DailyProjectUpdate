@@ -5,8 +5,8 @@ import { Employee } from 'src/employee/schema/Employee.schema';
 export class Project extends Document {
   @Prop()
   projectName: string;
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Employee' }] })
-  employeeIds: Employee[];
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Employee' })
+  employeeId: Employee;
   @Prop()
   description: string;
 }

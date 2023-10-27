@@ -6,6 +6,13 @@ import { CreateEmpDto } from './dto/createEmp.dto';
 import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { LoginEmpDto } from './dto/loginEmp.dto';
+import * as admin from 'firebase-admin';
+admin.initializeApp({
+  credential: admin.credential.cert(
+    '/home/my/Desktop/firebase-crud/src/firebase/firebase-config/testing-fc6d0-firebase-adminsdk-7djm1-16b84c1e31.json',
+  ),
+  databaseURL: 'https://testing-fc6d0-default-rtdb.firebaseio.com', // Replace with your Firebase Realtime Database URL
+});
 @Injectable()
 export class EmployeeService {
   constructor(

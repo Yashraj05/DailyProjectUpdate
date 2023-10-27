@@ -12,7 +12,7 @@ export class ProjectService {
   ) {}
   async createProject(createProjectDto: CreateProjectDto, emp: Employee) {
     const project = await this.projectModel.create(createProjectDto);
-    project.employeeIds.push(emp._id);
+    project.employeeId = emp._id;
     project.save();
     return project;
   }

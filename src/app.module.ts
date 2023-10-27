@@ -6,8 +6,11 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { EmployeeModule } from './employee/employee.module';
 import { ProjectModule } from './project/project.module';
+import { DailyupdateModule } from './dailyupdate/dailyupdate.module';
+import { ScheduleModule } from '@nestjs/schedule';
 @Module({
   imports: [
+    ScheduleModule.forRoot(),
     CompanyModule,
     ConfigModule.forRoot({
       envFilePath: '.env',
@@ -16,6 +19,7 @@ import { ProjectModule } from './project/project.module';
     MongooseModule.forRoot(process.env.DB_URI),
     EmployeeModule,
     ProjectModule,
+    DailyupdateModule,
   ],
   controllers: [AppController],
   providers: [AppService],
